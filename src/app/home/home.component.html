@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title>Weather app</title>
+  <link rel="stylesheet" href="/home.component.css />
+</head>
+
+<body>
+
+  <div>
+     <img src =" assets/images/wealogo.png" />
+
+  <form class="search-form">
+    <input type="text" class="form-control" placeholder="Search for a city..." name="inCity" [(ngModel)]="inCity">
+    <input type="image" src="assets/images/search.png/" (click)="onWeatherCity()">
+  </form>
+  </div>
+
+
+  <nav class="menu">
+    <ul>
+      <li><a routerLink="/home" class="btn btn-primary">Home</a></li>
+      <li><a routerLink="/favourite" routerLinkActive="active">Favourite</a></li>
+      <li><a routerLink="/recents" routerLinkActive="active">Recents</a></li>
+    </ul>
+  </nav>
+
+  <div class="first">
+    <hr>
+  </div>
+
+  <h1>{{weather.name}} , {{weather.sys.country}}</h1>
+
+  <div class="fav">
+    <img src="assets/images/favtra.png/">
+    <p>Add to favourites</p>
+  </div>
+
+
+  <div class="weaimg">
+    <h2 *ngIf="weather.weather[0].main=='Clouds'">
+      <img src="assets/images/cloudy.png">
+    </h2>
+    <h2 *ngIf="weather.weather[0].main=='Clear'">
+      <img src="assets/images/sunny.png">
+    </h2>
+    <h2 *ngIf="weather.weather[0].main=='Rain'">
+      <img src="assets/images/rainy.png">
+    </h2>
+    <h2 *ngIf="weather.weather[0].main=='Haze'">
+      <img src="assets/images/haze.png">
+    </h2>
+    <h2 *ngIf="weather.weather[0].main=='Thunderstorm'">
+      <img src="assets/images/thunderstorm.png">
+    </h2>
+    <h2 *ngIf="weather.weather[0].main=='Drizzle'">
+      <img src="assets/images/drizzle.png">
+    </h2>
+  </div>
+
+  <div class="info">
+
+    <h2 style="font-size:60px; color:white;">{{weather.main.temp}}°c</h2>
+    <p style="font-size:20px; color:white; margin-left: 0px;">{{weather.weather[0].description}}</p>
+
+  </div>
+
+  <div class="second">
+    <hr>
+  </div>
+
+  <div class="bottom">
+
+    <div class="temp">
+      <img src="assets/images/temp.png">
+      <h3 style="color:white">Min - Max</h3>
+      <h2 style="color:white">{{weather.main.temp_min}}-{{weather.main.temp_max}}</h2>
+
+    </div>
+
+    <div class="pre">
+      <img src="assets/images/pressure.png" style="width: 40px; height: 40px">
+      <h3 style="color:white">Pressure</h3>
+      <h2 style="color:white">{{weather.main.pressure}}mBar</h2>
+
+    </div>
+
+    <div class="hum">
+      <img src="assets/images/humid.png">
+      <h3 style="color:white">Humidity</h3>
+      <h2 style="color:white">{{weather.main.humidity}}%</h2>
+    </div>
+
+    <div class="win">
+      <img src="assets/images/wind.png" style="width: 40px; height: 40px">
+      <h3 style="color: white">Wind</h3>
+      <h2 style="color: white">{{weather.wind.speed}}mph</h2>
+
+    </div>
+
+    <div class="vis">
+      <img src="assets/images/vis.png">
+      <h3 style="color: white">Visibility</h3>
+      <h2 style="color: white">{{weather.visibility}}m</h2>
+    </div>
+
+  </div>
+  </body>
+
+</html>
